@@ -21,10 +21,10 @@ AddCondition(0, cf_none, "Is number positive", "My category", "{0} is positive",
 
 ////////////////////////////////////////
 // Actions
-AddStringParam("Address","The address to connect to.",'"ws://[UniqueName]"');
-AddAction(0,0,"Send data","WebSocket",
-          "Send data to Server",
-          "Send data to Server.","Connect");
+AddObjectParam("Player", "Object that coordinates have to be broadcasted");
+AddAction(0,0,"Send Coordinates","WebSocket",
+          "Send coordinates of {0} to Server",
+          "Send coordinates to Server.","SendCoords");
 
 
 ////////////////////////////////////////
@@ -36,16 +36,9 @@ ACESDone();
 
 ////////////////////////////////////////
 // Array of property grid properties for this plugin
-// new cr.Property(ept_integer,		name,	initial_value,	description)		// an integer value
-// new cr.Property(ept_float,		name,	initial_value,	description)		// a float value
-// new cr.Property(ept_text,		name,	initial_value,	description)		// a string
-// new cr.Property(ept_color,		name,	initial_value,	description)		// a color dropdown
-// new cr.Property(ept_font,		name,	"Arial,-16", 	description)		// a font with the given face name and size
-// new cr.Property(ept_combo,		name,	"Item 1",		description, "Item 1|Item 2|Item 3")	// a dropdown list (initial_value is string of initially selected item)
-// new cr.Property(ept_link,		name,	link_text,		description, "firstonly")		// has no associated value; simply calls "OnPropertyChanged" on click
 
 var property_list = [
-	new cr.Property(ept_integer, 	"My property",		77,		"An example property.")
+  new cr.Property(ept_text, "Host", "ws://[UniqueName]", "The address to connect to.");
 	];
 	
 // Called by IDE when a new object type is to be created
